@@ -6,48 +6,52 @@ public class Main {
         Scanner s = null;
         try {
             s = new Scanner(System.in);
-            Integer int1 = null;
-            Integer int2 = null;
+            Double oper1 = null;
+            Double oper2 = null;
             while (s.hasNext()) {
                 String input = s.next();
                 System.out.println(input);
                 //turn the string they give you into and integer so we can save em to vars.
-                if (int1 == null) {
+                if (oper1 == null) {
                     try{
-                        int1 = Integer.parseInt(input);
+                        oper1 = Double.parseDouble(input);
                     } catch (NumberFormatException e){
                         System.out.println("invalid input '" + input + "' try a number");
                     }
-                } else if (int2 == null) {
+                } else if (oper2 == null) {
 
                     try{
-                        int2 = Integer.parseInt(input);
-                        System.out.println(int1 + " " + input);
+                        oper2 = Double.parseDouble(input);
+                        System.out.println(oper1 + " " + input);
                     } catch (NumberFormatException e){
                         System.out.println("invalid input '" + input + "' try a number");
                     }
                 } else {
                     if (input.equals("+")){
-                        int1 = int1 + int2;
-                        System.out.println(int1);
-                        int2 = null;
+                        oper1 = oper1 + oper2;
+                        oper2 = null;
 
                     }else if (input.equals("-")){
-                        int1 = int1 - int2;
-                        System.out.println(int1);
-                        int2 = null;
+                        oper1 = oper1 - oper2;
+                        oper2 = null;
 
                     } else if (input.equals("*")){
-                        int1 = int1 * int2;
-                        System.out.println(int1);
-                        int2 = null;
-//                    } else if (input.equals("/")){
-//                        int1 = (int1 / int2);
-//                        int2 = null;
+                        oper1 = oper1 * oper2;
+                        oper2 = null;
+                    } else if (input.equals("/")){
+                        oper1 = oper1 / oper2;
+                        oper2 = null;
                     }
                     else {
                         System.out.println("Your input was " + input + " requires an operator");
                     }
+                }
+
+                if (oper1 != null){
+                    System.out.print(oper1);
+                }
+                if (oper2 != null){
+                    System.out.print(", " + oper2);
                 }
             }
         } finally {
